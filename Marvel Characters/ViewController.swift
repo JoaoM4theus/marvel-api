@@ -1,0 +1,19 @@
+//
+//  ViewController.swift
+//  Marvel Characters
+//
+//  Created by Softbuilder Hibrido on 19/08/21.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+
+
+}
+
