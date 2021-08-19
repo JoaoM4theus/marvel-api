@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4432BCB626CF1C9C0021772D /* DetailCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4432BCB526CF1C9C0021772D /* DetailCharacterViewController.swift */; };
 		446A6E9826CE9290001A0981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A6E9726CE9290001A0981 /* AppDelegate.swift */; };
 		446A6E9A26CE9290001A0981 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A6E9926CE9290001A0981 /* SceneDelegate.swift */; };
 		446A6E9C26CE9290001A0981 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A6E9B26CE9290001A0981 /* HomeViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4432BCB526CF1C9C0021772D /* DetailCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterViewController.swift; sourceTree = "<group>"; };
 		446A6E9426CE9290001A0981 /* Marvel Characters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marvel Characters.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		446A6E9726CE9290001A0981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		446A6E9926CE9290001A0981 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				446A6EA226CE9291001A0981 /* LaunchScreen.storyboard */,
 				446A6EA526CE9291001A0981 /* Info.plist */,
 				446A6EE126CEAC8C001A0981 /* CharacterCollectionViewCell.swift */,
+				4432BCB526CF1C9C0021772D /* DetailCharacterViewController.swift */,
 			);
 			path = "Marvel Characters";
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				446A6EE226CEAC8C001A0981 /* CharacterCollectionViewCell.swift in Sources */,
+				4432BCB626CF1C9C0021772D /* DetailCharacterViewController.swift in Sources */,
 				446A6E9C26CE9290001A0981 /* HomeViewController.swift in Sources */,
 				446A6E9826CE9290001A0981 /* AppDelegate.swift in Sources */,
 				446A6E9A26CE9290001A0981 /* SceneDelegate.swift in Sources */,
