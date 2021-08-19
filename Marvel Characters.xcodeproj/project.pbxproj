@@ -15,6 +15,7 @@
 		446A6EA426CE9291001A0981 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446A6EA226CE9291001A0981 /* LaunchScreen.storyboard */; };
 		446A6EAF26CE9291001A0981 /* Marvel_CharactersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A6EAE26CE9291001A0981 /* Marvel_CharactersTests.swift */; };
 		446A6EBA26CE9291001A0981 /* Marvel_CharactersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A6EB926CE9291001A0981 /* Marvel_CharactersUITests.swift */; };
+		446A6EE226CEAC8C001A0981 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A6EE126CEAC8C001A0981 /* CharacterCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		446A6EB526CE9291001A0981 /* Marvel CharactersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Marvel CharactersUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		446A6EB926CE9291001A0981 /* Marvel_CharactersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marvel_CharactersUITests.swift; sourceTree = "<group>"; };
 		446A6EBB26CE9291001A0981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		446A6EE126CEAC8C001A0981 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				446A6EA026CE9291001A0981 /* Assets.xcassets */,
 				446A6EA226CE9291001A0981 /* LaunchScreen.storyboard */,
 				446A6EA526CE9291001A0981 /* Info.plist */,
+				446A6EE126CEAC8C001A0981 /* CharacterCollectionViewCell.swift */,
 			);
 			path = "Marvel Characters";
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446A6EE226CEAC8C001A0981 /* CharacterCollectionViewCell.swift in Sources */,
 				446A6E9C26CE9290001A0981 /* HomeViewController.swift in Sources */,
 				446A6E9826CE9290001A0981 /* AppDelegate.swift in Sources */,
 				446A6E9A26CE9290001A0981 /* SceneDelegate.swift in Sources */,
