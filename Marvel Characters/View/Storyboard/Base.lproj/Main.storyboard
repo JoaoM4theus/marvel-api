@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -79,7 +79,6 @@
         <!--Detail Character View Controller-->
         <scene sceneID="hUm-tT-fNg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5F-uU-KIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Detail" id="7Ee-Lo-DDx" customClass="DetailCharacterViewController" customModule="Marvel_Characters" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yLu-ca-eVV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -95,7 +94,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIA-wt-TFm">
-                                <rect key="frame" x="20" y="522" width="374" height="340"/>
+                                <rect key="frame" x="20" y="492" width="374" height="287"/>
                                 <string key="text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -105,18 +104,18 @@
                         <viewLayoutGuide key="safeArea" id="bgE-fv-Li1"/>
                         <color key="backgroundColor" red="0.23405554889999999" green="0.24674019220000001" blue="0.28615188600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bgE-fv-Li1" firstAttribute="trailing" secondItem="iIA-wt-TFm" secondAttribute="trailing" constant="20" id="3PO-4y-swe"/>
                             <constraint firstItem="VGF-aR-Llp" firstAttribute="top" secondItem="16T-YD-adk" secondAttribute="bottom" constant="35" id="4vj-7G-YfB"/>
                             <constraint firstItem="bgE-fv-Li1" firstAttribute="bottom" secondItem="VGF-aR-Llp" secondAttribute="bottom" constant="370" id="91v-pB-bn3"/>
-                            <constraint firstItem="iIA-wt-TFm" firstAttribute="top" secondItem="VGF-aR-Llp" secondAttribute="bottom" constant="30" id="Gzi-hw-uNe"/>
                             <constraint firstItem="16T-YD-adk" firstAttribute="trailing" secondItem="bgE-fv-Li1" secondAttribute="trailing" id="LYo-AY-aBh"/>
-                            <constraint firstItem="iIA-wt-TFm" firstAttribute="leading" secondItem="bgE-fv-Li1" secondAttribute="leading" constant="20" id="QcL-Uk-PYN"/>
                             <constraint firstItem="VGF-aR-Llp" firstAttribute="top" secondItem="16T-YD-adk" secondAttribute="bottom" constant="35" id="Tz3-tn-PDl"/>
                             <constraint firstItem="16T-YD-adk" firstAttribute="top" secondItem="yLu-ca-eVV" secondAttribute="top" id="X9c-d1-9aT"/>
-                            <constraint firstItem="iIA-wt-TFm" firstAttribute="bottom" secondItem="bgE-fv-Li1" secondAttribute="bottom" id="Zr4-ui-pMY"/>
+                            <constraint firstItem="iIA-wt-TFm" firstAttribute="top" secondItem="VGF-aR-Llp" secondAttribute="bottom" id="XK4-5B-45s"/>
+                            <constraint firstItem="bgE-fv-Li1" firstAttribute="trailing" secondItem="iIA-wt-TFm" secondAttribute="trailing" constant="20" id="ZNW-e4-IeR"/>
                             <constraint firstItem="VGF-aR-Llp" firstAttribute="leading" secondItem="bgE-fv-Li1" secondAttribute="leading" constant="20" id="bkp-r5-sGy"/>
+                            <constraint firstItem="bgE-fv-Li1" firstAttribute="bottom" secondItem="iIA-wt-TFm" secondAttribute="bottom" constant="83" id="d3S-sn-Y5b"/>
                             <constraint firstItem="16T-YD-adk" firstAttribute="leading" secondItem="bgE-fv-Li1" secondAttribute="leading" id="iXK-pl-DMY"/>
                             <constraint firstItem="bgE-fv-Li1" firstAttribute="trailing" secondItem="VGF-aR-Llp" secondAttribute="trailing" constant="195" id="rH2-Ns-HYk"/>
+                            <constraint firstItem="iIA-wt-TFm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VGF-aR-Llp" secondAttribute="leading" id="zqd-Ct-YNh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -125,8 +124,9 @@
                         <outlet property="nameCharacter" destination="VGF-aR-Llp" id="0Zi-ET-OCS"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5F-uU-KIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="680" y="117"/>
+            <point key="canvasLocation" x="679.71014492753625" y="116.51785714285714"/>
         </scene>
     </scenes>
 </document>
