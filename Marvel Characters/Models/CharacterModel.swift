@@ -24,33 +24,38 @@ protocol CharacterDelegate: AnyObject {
 class CharacterModel {
     weak var delegate: CharacterDelegate?
     
-    func getHeroes(offset: Int = 50){
-            
-            let publicKey = Keys.keyPublic.rawValue
-            let ts = Date().currentTimeStamp
-            let hash = ApiManager.shared.createAPIKey(ts: ts)
-            
-            let url = HeroesAPIURL.getHeroes.rawValue
-            
-            let requestURL = url + "?ts=\(ts)&apikey=\(publicKey)&hash=\(hash)&limit=50&offset=\(offset)"
-            
-            RequestManager.shared.makeRequest(to: requestURL, method: .get) { (data, error) in
-                guard let data = data else { return }
-                if error == nil{
-                    do {
-                        let decoder = JSONDecoder()
-                        if let response = try? decoder.decode(CharacterDataWrapper.self, from: data){
-                            let characters = response.data.results
-                            if !characters.isEmpty{
-                                self.delegate?.fetchCharacter(characters: characters)
-                            }else{
-                                self.delegate?.failFetchCharacter(message: "Falha ao encontrar heróis")
-                            }
+    func getHeroes(offset: Int = 0, nameCharacter: String = ""){
+        
+        let publicKey = Keys.keyPublic.rawValue
+        let ts = Date().currentTimeStamp
+        let hash = ApiManager.shared.createAPIKey(ts: ts)
+        let name = nameCharacter != ""
+        let url = HeroesAPIURL.getHeroes.rawValue
+        
+        let requestURL = name ? url + "?ts=\(ts)&apikey=\(publicKey)&hash=\(hash)&limit=50&offset=\(offset)&name=\(nameCharacter)" : url + "?ts=\(ts)&apikey=\(publicKey)&hash=\(hash)&limit=50&offset=\(offset)"
+        
+        RequestManager.shared.makeRequest(to: requestURL, method: .get) { (data, error) in
+            guard let data = data else { return }
+            if error == nil{
+                do {
+                    let decoder = JSONDecoder()
+                    if let response = try? decoder.decode(CharacterDataWrapper.self, from: data){
+                        let characters = response.data.results
+                        if !characters.isEmpty{
+                            self.delegate?.fetchCharacter(characters: characters)
+                        }else{
+                            self.delegate?.failFetchCharacter(message: "Falha ao encontrar heróis")
                         }
                     }
-                }else{
-                    self.delegate?.failFetchCharacter(message: "Falha ao encontrar heróis")
                 }
+            }else{
+                self.delegate?.failFetchCharacter(message: "Falha ao encontrar heróis")
             }
         }
+    }
+    
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
 }

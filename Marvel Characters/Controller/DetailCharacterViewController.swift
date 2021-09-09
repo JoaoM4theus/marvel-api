@@ -13,26 +13,30 @@ class DetailCharacterViewController: UIViewController {
     @IBOutlet weak var descriptionCharacter: UILabel!
     
     var image: String?
+    var _extension: String?
     var name: String?
     var descricao: String?
+    var url: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let loadToImage = image {
-            imageCharacter.image = UIImage(named: loadToImage)
-        }
+        setup()
         nameCharacter.text = name
         descriptionCharacter.text = descricao
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setup() {
+        setupImage()
+        nameCharacter.text = name
+        descriptionCharacter.text = descricao
     }
-    */
-
+    
+    func setupImage() {
+        guard let imageUrl = image else { return }
+        if _extension == "jpg" {
+            imageCharacter.image = downloadImage(from: URL(string: imageUrl)!, view: imageCharacter)
+        } else {
+            imageCharacter.image = UIImage.gifImageWithURL(imageUrl)
+        }
+    }
 }

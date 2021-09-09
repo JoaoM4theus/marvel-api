@@ -46,6 +46,7 @@ struct Url: Codable {
 
 struct Image: Codable {
     let path: String?
+    let `extension`: String?
 }
 
 struct Comics: Codable {
