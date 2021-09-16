@@ -59,17 +59,19 @@ extension UIImageView {
     }
 }
 
-extension UIViewController {
+extension UIImage {
+    
+    //MARK: - BAIXAR IMAGEM
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
     func downloadImage(from url: URL, view: UIImageView) -> UIImage {
-        print("Download Started")
+//        print("Download Started")
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
             print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
+//            print("Download Finished")
             // always update the UI from the main thread
             DispatchQueue.main.async() { [weak self] in
                 view.image = UIImage(data: data)
@@ -77,11 +79,9 @@ extension UIViewController {
         }
         return view.image ?? UIImage()
     }
-}
-
-
-extension UIImage {
     
+    
+    //MARK: - PEGAR IMAGEM GIF
     public class func gifImageWithData(_ data: Data) -> UIImage? {
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
             print("image doesn't exist")

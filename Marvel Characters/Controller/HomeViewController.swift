@@ -11,57 +11,62 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var viewModel = CharacterModel()
+    lazy var viewModel: CharacterModel = {
+        let obj = CharacterModel()
+        obj.delegate = self
+        return obj
+    }()
     
     var heroes = [Character]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = self
+        accessDelegateDataSource()
         viewModel.getHeroes()
-        searchBar.delegate = self
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    private func accessDelegateDataSource(){
+        searchBar.delegate = self
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        viewModel.delegate = self
+    }
+    
+    private func reloadData() {
+        self.collectionView.reloadData()
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return heroes.count
+        return viewModel.heroes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterCollectionViewCell", for: indexPath) as! CharacterCollectionViewCell
-        cell.characterLabel.text = heroes[indexPath.row].name
-        cell.characterImage.layer.cornerRadius = 15
-        
-        if heroes[indexPath.row].thumbnail?.extension == "jpg" {
-            cell.characterImage.image = downloadImage(from: URL(string: "\(heroes[indexPath.row].thumbnail?.path ?? "").\(heroes[indexPath.row].thumbnail?.extension ?? "")")!, view: cell.characterImage)
-        } else {
-            cell.characterImage.image = UIImage.gifImageWithURL("\(heroes[indexPath.row].thumbnail?.path ?? "").\(heroes[indexPath.row].thumbnail?.extension ?? "")")
-        }
-        
-        cell.layer.cornerRadius = 15
-        
-        return cell
+        return viewModel.configCell(collection: collectionView, indexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        if let vc = storyboard?.instantiateViewController(identifier: "Detail") as? DetailCharacterViewController {
+//            vc.name = viewModel.heroes[indexPath.row].name
+//            vc.descricao = viewModel.heroes[indexPath.row].description
+//            if viewModel.heroes[indexPath.row].description == "" {
+//                vc.descricao =  "Unable to get descriptive information for this hero. Sorry"
+//            }
+//            vc.image = "\(viewModel.heroes[indexPath.row].thumbnail?.path ?? "").\(viewModel.heroes[indexPath.row].thumbnail?.extension ?? "")"
+//            vc._extension = viewModel.heroes[indexPath.row].thumbnail?.extension
+//
+//            present(vc, animated: true, completion: nil)
+//        }
         if let vc = storyboard?.instantiateViewController(identifier: "Detail") as? DetailCharacterViewController {
-            vc.name = heroes[indexPath.row].name
-            vc.descricao = heroes[indexPath.row].description
-            if heroes[indexPath.row].description == "" {
-                vc.descricao =  "Unable to get descriptive information for this hero. Sorry"
-            }
-            vc.image = "\(heroes[indexPath.row].thumbnail?.path ?? "").\(heroes[indexPath.row].thumbnail?.extension ?? "")"
-            vc._extension = heroes[indexPath.row].thumbnail?.extension
-            
+            vc.viewModel = DetailCharacterModel(character: viewModel.heroes[indexPath.row])
             present(vc, animated: true, completion: nil)
         }
     }
@@ -73,9 +78,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.heroes.removeAll()
+        self.viewModel.heroes.removeAll()
         self.viewModel.getHeroes(nameCharacter: searchBar.text ?? "")
-        self.collectionView.reloadData()
+        reloadData()
         view.endEditing(true)
     }
     
@@ -83,20 +88,30 @@ extension HomeViewController: UISearchBarDelegate {
         if searchText == "" {
             self.heroes.removeAll()
             self.viewModel.getHeroes()
-            self.collectionView.reloadData()
+            self.reloadData()
         }
     }
 }
 
 extension HomeViewController: CharacterDelegate {
-    func fetchCharacter(characters: [Character]) {
+    func finishFetchCharacter() {
         DispatchQueue.main.async {
-            self.heroes.append(contentsOf: characters)
             self.collectionView.reloadData()
         }
     }
     
+    func fetchCharacter(characters: [Character]) {
+//        DispatchQueue.main.async {
+//            self.heroes.append(contentsOf: characters)
+//            self.reloadData()
+//        }
+    }
+    
     func failFetchCharacter(message: String) {
+        //EMITIR ALERTA
+//        self.heroes.removeAll()
+//        viewModel.getHeroes()
+//        self.collectionView.reloadData()
         print(message)
     }
 }
